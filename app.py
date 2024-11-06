@@ -24,11 +24,6 @@ def login():
     username = request.form["username"]
     password = request.form["password"]
     user = models.User.query.filter_by(username=username).first()
-    print (username)
-    print (password)
-
-    print (user.username)
-    print (user.password)
     if username == user.username and password==user.password:
         session['id'] =user.id
         session['username'] = username
