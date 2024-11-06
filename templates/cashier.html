@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Calculator</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet"  href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <form class="login-form">
+            <!-- Input and Datalist -->
+            <div class="input-group">
+                <label for="numberInput">Enter A Debtor (Optional)</label>
+                <input type="text" id="numberInput" name="numberInput" list="namelist">
+                <datalist id="namelist">
+
+                </datalist>
+            </div>
+
+            <!-- Calculator -->
+            <div class="calculator">
+                <!-- Calculator display -->
+                <div class="input-group">
+                    <input type="text" id="display" readonly>
+                </div>
+                <!-- Calculator buttons -->
+                <div class="calculator-buttons">
+                    <!-- First Row -->
+                    <div class="input-group">
+                        <button type="button" class="calc-button" data-value="7">7</button>
+                        <button type="button" class="calc-button" data-value="8">8</button>
+                        <button type="button" class="calc-button" data-value="9">9</button>
+                        <button type="button" class="calc-button" data-value="/">/</button>
+                    </div>
+                    <!-- Second Row -->
+                    <div class="input-group">
+                        <button type="button" class="calc-button" data-value="4">4</button>
+                        <button type="button" class="calc-button" data-value="5">5</button>
+                        <button type="button" class="calc-button" data-value="6">6</button>
+                        <button type="button" class="calc-button" data-value="*">*</button>
+                    </div>
+                    <!-- Third Row -->
+                    <div class="input-group">
+                        <button type="button" class="calc-button" data-value="1">1</button>
+                        <button type="button" class="calc-button" data-value="2">2</button>
+                        <button type="button" class="calc-button" data-value="3">3</button>
+                        <button type="button" class="calc-button" data-value="-">-</button>
+                    </div>
+                    <!-- Fourth Row -->
+                    <div class="input-group">
+                        <button type="button" class="calc-button" data-value="0">0</button>
+                        <button type="button" class="calc-button" data-value=".">.</button>
+                        <button type="button" class="calc-button" data-value="C">C</button>
+                        <button type="button" class="calc-button" data-value="+">+</button>
+                    </div>
+                    <!-- Equals Button -->
+                    <div class="input-group">
+                        <button type="button" class="calc-button equals-button" data-value="=">=</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="login-button">Submit</button>
+        </form>
+    </div>
+
+    <!-- Include JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

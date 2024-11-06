@@ -1,0 +1,206 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #FFFFFF; /* Set background to white */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Login Container */
+.login-container {
+    background-color: #E3FEF7; /* Fourth Color */
+    padding: 40px;
+    border-radius: 8px;
+    /* Optional: Adjust the box-shadow for better visibility */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Login Form */
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: #003C43; /* Main Color */
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #003C43; /* Main Color for better contrast */
+    font-weight: 700;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #77B0AA; /* Third Color */
+    background-color: #FFFFFF; /* Input background to white */
+    color: #003C43; /* Main Color */
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #003C43; /* Main Color */
+    outline: none;
+}
+
+/* Login Button */
+.login-button {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #003C43; /* Main Color */
+    color: #E3FEF7; /* Fourth Color */
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #135D66; /* Secondary Color */
+}
+
+/* Forgot Password */
+.forgot-password {
+    text-align: center;
+    margin-top: 16px;
+}
+
+.forgot-password a {
+    color: #135D66; /* Secondary Color */
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+/* Calculator Buttons */
+.calc-button {
+    width: 23%;
+    padding: 12px 0;
+    margin: 1%;
+    background-color: #77B0AA; /* Third Color */
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+}
+
+.calc-button:hover {
+    background-color: #135D66; /* Secondary Color */
+}
+
+/* Calculator display input */
+#display {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #77B0AA;
+    background-color: #FFFFFF;
+    color: #003C43;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Adjust input-group to display buttons inline */
+.calculator-buttons .input-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Center the equals button */
+.equals-button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.forgot-password a:hover {
+    color: #77B0AA; /* Third Color */
+}
+
+/* Style for select dropdown */
+.input-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #77B0AA;
+    background-color: #FFFFFF;
+    color: #003C43;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s, background-color 0.3s;
+    appearance: none; /* Remove default arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    /* Custom arrow using SVG background */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8"><path fill="%23003C43" d="M7 8L0 0h14z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 12px;
+}
+
+.input-group select:hover {
+    background-color: #F0F8F7; /* Slight background change on hover */
+}
+
+.input-group select:focus {
+    border-color: #003C43;
+    outline: none;
+}
+
+/* Hide the default dropdown arrow in IE */
+.input-group select::-ms-expand {
+    display: none;
+}
+
+/* Ensure the parent div is positioned relative for the arrow */
+.input-group {
+    position: relative;
+}
+
+
+
+@media (max-width: 400px) {
+    .login-form h2 {
+        font-size: 24px;
+    }
+
+    .input-group label {
+        font-size: 14px;
+    }
+
+    .input-group input {
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+
+    .login-button {
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+
+    .forgot-password a {
+        font-size: 12px;
+    }
+}
