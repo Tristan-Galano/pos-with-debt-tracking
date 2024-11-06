@@ -38,7 +38,7 @@ class Debtor (app.db.Model):
         super().__init__(*args, **kwargs)
 
     def __repr__(self):
-        return f'<Debtor id:{self.id} - {self.name}'
+        return f'debtor_id:{self.debtor_id} - {self.name}'
 
 
 @dataclass
@@ -66,6 +66,6 @@ class Transaction (app.db.Model):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
     def __repr__(self):
-        return f'<Transaction id:{self.id} - {self.name}'
+        return f'Transaction_id:{self.trans_id} - {self.name}'
 
 

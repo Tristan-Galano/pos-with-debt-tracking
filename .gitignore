@@ -1,1 +1,1 @@
-echo '__pycache__/' >> .gitignore
+echo '__pycache__/'

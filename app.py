@@ -32,7 +32,6 @@ def login():
     else:
         return redirect('/')
 
-
 @app.route("/sign-up")
 def create_user():
     if session.get('admin'):
@@ -44,7 +43,9 @@ def create_user():
 @app.route("/cashier")
 def cashier():
       if session.get('username'):
-        return render_template('cashier.html')
+        debtors = models.Debtor.query.all()
+        
+        return render_template('cashier.html', debtors = debtors)
       else:
           return redirect('/')
         

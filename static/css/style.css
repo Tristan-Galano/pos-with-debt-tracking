@@ -179,6 +179,11 @@ body {
     position: relative;
 }
 
+option {
+    text-indent: 1em; /* Indent text to hide ID */
+    overflow: hidden; /* Clip overflowing content */
+  }
+
 
 
 @media (max-width: 400px) {
