@@ -2,6 +2,7 @@
 // Get all the calculator buttons
 const buttons = document.querySelectorAll('.calc-button');
 const display = document.getElementById('display');
+const disnumberInputplay = document.getElementById('display');
 
 let currentInput = '';
 
@@ -26,3 +27,25 @@ buttons.forEach(button => {
         }
     });
 });
+
+document.getElementById('myForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevents default submission
+
+    const formData = new FormData(this);
+
+    fetch('http://127.0.0.1:5000//tansaction', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Process the response data
+      console.log('Success:', data);
+      // You can update the page content here without reloading
+      display.value = '';
+      disnumberInputplay.value = '';
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  });

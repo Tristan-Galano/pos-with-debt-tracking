@@ -1,4 +1,4 @@
-from flask import Flask, render_template,redirect, request, session, url_for
+from flask import Flask, jsonify, render_template,redirect, request, session, url_for
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -48,4 +48,12 @@ def cashier():
         return render_template('cashier.html', debtors = debtors)
       else:
           return redirect('/')
+      
+
+@app.route('/tansaction', methods=['POST', 'GET'])
+def tansaction():
+    amount = request.form["amount"]
+    print(amount)
+    return jsonify({'result':'ok'}), 200
+
         
