@@ -27,6 +27,9 @@ def login():
     username = request.form["username"]
     password = request.form["password"]
     user = models.User.query.filter_by(username=username).first()
+    if user is None:
+        return redirect('/')
+    
     if username == user.username and password==user.password:
         session['id'] = user.id
         session['username'] = username
@@ -36,13 +39,32 @@ def login():
         return redirect('/')
 
 @app.route("/sign-up")
-def create_user():
+def sign_up():
 
     if session.get('admin'):
         if session['admin'] == True:
             return render_template("signup.html")
     else:
         return redirect('/cashier')
+    
+@app.route("/create_user", methods=['POST', 'GET'])
+def create_user():
+    role = request.form['role']
+    fullname = request.form['fullname']
+    password = request.form['password']
+    if role != 'user':
+        role = True
+    else:
+        role = False
+        
+    user = models.User(
+        username = fullname,
+        password = password,
+        admin = role
+    )
+    db.session.add(user)
+    db.session.commit()
+    return redirect('/cashier')
     
 @app.route("/cashier")
 def cashier():
