@@ -12,8 +12,8 @@
             <!-- Input and Datalist -->
             <div class="input-group">
                 <label for="numberInput">Enter A Debtor (Optional)</label>
-                <input type="text" id="namelist" name="namelist" list="namelist" >
-                <datalist id="namelist">
+                <input type="text" id="namelist" name="namelist" list="fullname" >
+                <datalist id="fullname">
                     {% for debtor in debtors %}
                     <option value="{{ debtor.name }} {{debtor.lastname}}">{{ debtor.name }} {{debtor.lastname}}</option>
                     {% endfor %}
