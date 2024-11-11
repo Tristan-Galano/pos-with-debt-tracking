@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% extends "base.html" %}
 <head>
     <meta charset="UTF-8">
     <title>Form Calculator</title>
@@ -7,6 +8,7 @@
     <link rel="stylesheet"  href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+    {% block content %}
     <div class="login-container">
         <form id="myForm" class="login-form">
             <!-- Input and Datalist -->
@@ -67,5 +69,6 @@
     </div>
     <!-- Include JavaScript -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% endblock content %}
 </body>
 </html>

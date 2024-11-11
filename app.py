@@ -18,7 +18,8 @@ app.app_context().push()
 
 @app.route("/")
 def home():
-
+    if session.get('id'):
+        return redirect('cashier')
     return render_template("index.html")
 
 @app.route("/login", methods=["POST"])
