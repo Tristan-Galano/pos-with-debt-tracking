@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% extends "base.html" %}
+<head>
+    <meta charset="UTF-8">
+    <title>Signup Page</title>
+    <!-- Import Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet"  href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% block content %}
+    <div class="login-container">
+        <form class="login-form" action="{{url_for('debtor')}}" method="POST">
+            <h2>Add Debtor</h2>
+            <div class="input-group">
+                <label for="fullname">First Name</label>
+                <input type="text" id="fullname" name="firstname" placeholder="Enter your first name" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Last Name</label>
+                <input type="text" id="password" name="lastname" placeholder="Enter your last name" required>
+            </div>
+            <button type="submit" class="login-button">Create Debtor</button>
+        </form>
+    </div>
+    {% endblock content %}
+</body>
+</html>

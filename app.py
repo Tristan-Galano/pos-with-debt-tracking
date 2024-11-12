@@ -78,9 +78,27 @@ def cashier():
       else:
           return redirect('/')
       
-@app.route('/tansaction', methods=['POST', 'GET'])
+@app.route("/debtor", methods=['POST','GET'])
+def debtor():
+    if request.method =='POST':
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
+        debtor = models.Debtor(
+            name = firstname,
+            lastname = lastname
+        )
+        db.session.add(debtor)
+        db.session.commit()
+        return redirect('/')
+    if session.get('id'):
+        return render_template('debtor.html')
+    return redirect('/')
+
+@app.route(/)
+      
+@app.route('/tansaction', methods=['POST'])
 def tansaction():
-    
+
     fullname = request.form['namelist']
     amount = request.form['amount']
     debtor_id = None
