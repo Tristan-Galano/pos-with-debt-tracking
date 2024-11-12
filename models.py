@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime
 import app
 
+
 @dataclass
 class User(app.db.Model):
     # id : int
@@ -21,7 +22,7 @@ class User(app.db.Model):
 
     def __repr__(self):
         return f'<User id:{self.id} - {self.username}'
-    
+
 @dataclass
 class Debtor (app.db.Model):
     # debtor_id : int
@@ -29,9 +30,10 @@ class Debtor (app.db.Model):
     # lastname : str
     # date: datetime
 
-    debtor_id = app.db.Column(app.db.Integer(), primary_key=True, autoincrement=True)
+    debtor_id = app.db.Column(
+        app.db.Integer(), primary_key=True, autoincrement=True)
     name = app.db.Column(app.db.String(140))
-    lastname= app.db.Column(app.db.String(140))
+    lastname = app.db.Column(app.db.String(140))
     date = app.db.Column(app.db.DateTime(), default=datetime.now())
 
     def __init__(self, *args, **kwargs):
@@ -53,19 +55,22 @@ class Transaction (app.db.Model):
     # updated_at : datetime
     # updated_by : int
 
-    trans_id = app.db.Column(app.db.Integer(), primary_key=True, autoincrement=True)
-    id = app.db.Column(app.db.Integer, app.db.ForeignKey('user.id'), nullable=False)
-    debtor_id = app.db.Column(app.db.Integer, app.db.ForeignKey('debtor.debtor_id'), nullable=True)
+    trans_id = app.db.Column(
+        app.db.Integer(), primary_key=True, autoincrement=True)
+    id = app.db.Column(app.db.Integer, app.db.ForeignKey(
+        'user.id'), nullable=False)
+    debtor_id = app.db.Column(app.db.Integer, app.db.ForeignKey(
+        'debtor.debtor_id'), nullable=True)
     amount = app.db.Column(app.db.Float)
     name = app.db.Column(app.db.String(50))
     trans_date = app.db.Column(app.db.DateTime(), default=datetime.now())
     status = app.db.Column(app.db.String(50))
     updated_at = app.db.Column(app.db.DateTime(), default=datetime.now())
-    updated_by = app.db.Column(app.db.Integer, app.db.ForeignKey('user.id'), nullable=False)
+    updated_by = app.db.Column(
+        app.db.Integer, app.db.ForeignKey('user.id'), nullable=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
     def __repr__(self):
         return f'Transaction_id:{self.trans_id} - {self.name}'
-
-
