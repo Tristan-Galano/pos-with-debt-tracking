@@ -1,7 +1,8 @@
 from flask import Flask, jsonify, render_template, redirect, request, session, url_for
 
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import func
+from flask_migrate import Migrate
+
 
 from config import Config
 
@@ -9,6 +10,7 @@ from config import Config
 app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 
 app.secret_key = ['sadsadsadsafgfhjtrew23456uiutjyhg']
@@ -109,6 +111,27 @@ def logout():
     session.pop('admin', None)
     return redirect('/')
 
+@app.route('/report', methods=['POST','GET'])
+def report():
+    transactions_with_details = (
+    db.session.query(
+        models.Transaction.trans_id,
+        models.User.username,
+        models.Debtor.name.label("debtor_name"),  # Adding debtor's name to the query
+        models.Transaction.amount,
+        models.Transaction.Transaction_type,
+        models.Transaction.trans_date,
+        models.Transaction.status,
+        models.Transaction.updated_at,
+        models.Transaction.updated_by,
+    )
+    .join(models.User, models.Transaction.id == models.User.id)  # Join with User table on user ID
+    .outerjoin(models.Debtor, models.Transaction.debtor_id == models.Debtor.debtor_id)  # Outer join with Debtor table on debtor_id
+    .all()
+)
+    
+    return render_template('report.html',records = transactions_with_details)
+
 
 @app.route('/tansaction', methods=['POST'])
 def tansaction():
@@ -131,7 +154,7 @@ def tansaction():
         id=user_id,
         debtor_id=debtor_id,
         amount=amount,
-        name=trans_type,
+        trans_type=trans_type,
         status=status,
         updated_by=updated_by
     )

@@ -242,6 +242,52 @@ nav::after {
   display: table;
 }
 
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
+.filter {
+  flex: 1 1 calc(50% - 10px);
+  min-width: 120px;
+  position: relative;
+}
+
+.filter input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+.table-container {
+  overflow-x: auto;
+  padding: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+table th, table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+
 @media (max-width: 400px) {
   .login-form h2 {
     font-size: 24px;

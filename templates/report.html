@@ -1,0 +1,62 @@
+{% extends "base.html" %} {% block content %}
+<div class="filter-container">
+  <!-- Example filter inputs for Transaction Data -->
+  <div class="filter">
+    <input
+      type="text"
+      list="transactionStatus"
+      placeholder="Transaction Status"
+    />
+    <datalist id="transactionStatus">
+      {% for status in statuses %}
+      <option value="{{ status }}">{% endfor %}</option>
+    </datalist>
+  </div>
+  <div class="filter">
+    <input type="text" list="userName" placeholder="User Name" />
+    <datalist id="userName">
+      {% for user in users %}
+      <option value="{{ user }}">{% endfor %}</option>
+    </datalist>
+  </div>
+  <div class="filter">
+    <input type="date" placeholder="Transaction Date" name="startdate"/>
+  </div>
+  <div class="filter">
+    <input type="date" placeholder="Transaction Date" name="enddate"/>
+  </div>
+</div>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Transaction ID</th>
+        <th>UserName</th>
+        <th>Debtor Name </th>
+        <th>Amount</th>
+        <th>Transaction Type</th>
+        <th>Transaction Date</th>
+        <th>Status</th>
+        <th>Updated At</th>
+        <th>Updated By</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for record in records %}
+      <tr>
+        <td>{{ record.trans_id }}</td>
+        <td>{{ record.username }}</td>
+        <td>{{ record.debtor_name }}</td>
+        <td>{{ record.amount }}</td>
+        <td>{{ record.Transaction_type }}</td>
+        <td>{{ record.trans_date.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+        <td>{{ record.status }}</td>
+        <td>{{ record.updated_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+        <td>{{ record.updated_by }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock content %}
